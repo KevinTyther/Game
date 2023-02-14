@@ -10,6 +10,8 @@ int numChoice;
 
 //bools
 bool menu = true;
+bool startGame;
+bool SGF; 
 
 //strings
 string stringChoice;
@@ -40,6 +42,7 @@ void static Menu()
         {
             system("cls");
             StartGame();
+            menu = false;
         }
         if (numChoice == 2)
         {
@@ -64,7 +67,37 @@ void static Menu()
 
 void StartGame()
 {
+    startGame = true;
+    while (startGame)
+    {
+        SGF = true;
+        while (SGF)
+        {
+            cout << "If this is you'r first time playing make sure you read the tutorial\n\n";
+            cout << "1. Tutorial\n";
+            cout << "2. Skip\n\n";
+            cout << "Action: ";
+            cin >> numChoice;
+            if (numChoice == 1)
+            {
+                Tutorial();
+            }
+            if (numChoice == 2)
+            {
+                SGF = false;
+            }
+        }
+    }
+}
 
+void Tutorial()
+{
+    system("cls");
+    cout << "Hi, so this is my game and I want to make sure you understand everything\n";
+    cout << "The main infomations I want to make sure you understand is how to save\n";
+    cout << "You can do this by entering the options is always avaible\n";
+    cout << "Once you are done reading this just press any key to continue\n\n";
+    system("pause");
 }
 
 void OptionsMenu()
