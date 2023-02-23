@@ -2,29 +2,34 @@
 #include <string>
 #include <fstream>
 #include <Windows.h>
+#include <stdlib.h>
 #include "Save.h"
 
 using namespace std;
 
 //ints
 int numChoice;
-int health = 100;
-int smarts = 1;
-int defense = 0;
-int mana = 1;
-int strength = 1;
-int stamina = 1;
-int statPoints = 10;
+int health = 100; // Save
+int smarts = 1; // Save
+int defense = 0; // Save
+int mana = 1; // Save
+int strength = 1; // Save
+int stamina = 1; // Save
+int statPoints = 10; // Save
+int color; // Save
 
 //bools
 bool menu = true;
 bool startGame;
 bool SGF; 
 bool stats;
+bool optionsMenu;
+bool colorOptions;
+bool game; // Save
 
 //strings
 string stringChoice;
-string name;
+string name; // Save
 
 //functions
 void Menu();
@@ -33,6 +38,7 @@ void OptionsMenu();
 void Tutorial();
 void Loading();
 void Game();
+void PlacerHolders();
 
 int main()
 {
@@ -66,6 +72,7 @@ void static Menu()
         if (numChoice == 3)
         {
             system("cls");
+            optionsMenu = true;
             OptionsMenu();
             system("pause");
         }
@@ -287,6 +294,7 @@ void StartGame()
                         stats = false;
                         SGF = false;
                         startGame = false;
+                        
                     }
                     if (numChoice == 2)
                     {
@@ -338,27 +346,120 @@ void Tutorial()
 
 void OptionsMenu()
 {
+    while (optionsMenu)
+    {
+        system("cls");
+        cout << "1. Text Options\n";
+        cout << "2. Dev Options\n";
+        cout << "3. Save\n";
+        cout << "4. Back\n";
+        cout << "ver. 0.0.1\n\n";
+        cout << "Action: ";
+        cin >> numChoice;
+        if (numChoice == 1)
+        {
+            colorOptions = true;
+            while (colorOptions)
+            {
+                system("cls");
+                cout << "1. White on Black\n";
+                cout << "2. Light Blue on Black\n";
+                cout << "3. Green on Black\n";
+                cout << "4. Purple on Black\n";
+                cout << "5. Red on Black\n";
+                cout << "6. Yellow on Black\n";
+                cout << "7. Back\n\n";
+                cout << "Action: ";
+                cin >> numChoice;
+                if (numChoice == 1)
+                {
+                    system("Color 0F");
+                    color = 1;
+                }
+                if (numChoice == 2)
+                {
+                    system("Color 0B");
+                    color = 2;
+                }
+                if (numChoice == 3)
+                {
+                    system("Color 0A");
+                    color = 3;
+                }
+                if (numChoice == 4)
+                {
+                    system("Color 0D");
+                    color = 4;
+                }
+                if (numChoice == 5)
+                {
+                    system("Color 0C");
+                    color = 5;
+                }
+                if (numChoice == 6)
+                {
+                    system("Color 0E");
+                    color = 7;
+                }
+                if (numChoice == 7)
+                {
+                    colorOptions = false;
+                    optionsMenu = true;
+                }
+                if (numChoice >= 8)
+                {
+                    cout << "Not a valid choice\n";
+                }
+            }
+        }
+        if (numChoice == 2)
+        {
 
+        }
+        if (numChoice == 3)
+        {
+
+        }
+        if (numChoice == 4)
+        {
+            optionsMenu = false;
+            menu = true;
+        }
+        if (numChoice >= 5)
+        {
+
+        }
+    }
 }
 
 void Loading() // For fun
 {
     cout << "*____" << endl;
-    Sleep(500);
+    Sleep(900);
     system("cls");
     cout << "**___" << endl;
-    Sleep(640);
+    Sleep(1240);
     system("cls");
     cout << "***__" << endl;
-    Sleep(300);
+    Sleep(700);
     system("cls");
     cout << "****_" << endl;
-    Sleep(1000);
+    Sleep(1630);
     system("cls");
     cout << "*****" << endl;
+    Game();
 }
 
 void Game()
 {
+    PlacerHolders();
+}
 
+void PlacerHolders()
+{
+    system("cls");
+    cout << " -------------------\n";
+    cout << "| Under Development |\n";
+    cout << " -------------------\n";
+    cout << "Come Back Later\n\n";
 }
